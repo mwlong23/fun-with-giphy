@@ -4,11 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="./index.js"></script>
   <link rel="stylesheet" href="./styles.css">
   <title>Document</title>
 </head>
 <body>
-  
+  <div>
+    <img id='giphy-image' src="" alt="">
+  </div>
 </body>
+<script>
+  function getGiphy(){
+    fetch(`http://api.giphy.com/v1/gifs/random?api_key=7z3e0WJKmlkbcvOvsfUn6wq8MOV5uzeE`)
+
+    .then(res => {
+      console.log(res)
+      return res.json();})
+    .then(giphyInfo => {
+      let url = giphyInfo.data.images.fixed_width.url;
+      console.log(url )
+      document.getElementById('giphy-image').src = url;
+    })
+  }
+  getGiphy()
+</script>
 </html>
